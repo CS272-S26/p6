@@ -1,1 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Addition</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #fffaf5;
+      color: #333;
+      padding: 32px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 24px;
+    }
+
+    .calculator {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    input[type="number"] {
+      width: 120px;
+      padding: 12px;
+      font-size: 1.2rem;
+      text-align: center;
+      border: 2px solid #d9c2a7;
+      border-radius: 10px;
+      background: white;
+    }
+
+    .plus {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    button {
+      padding: 12px 20px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 10px;
+      background: #e7b977;
+      color: #222;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background: #dca85d;
+    }
+
+    .sum-text {
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-bottom: 28px;
+    }
+
+    .answer-check {
+      margin: 32px 0;
+    }
+
+    .answer-check input {
+      margin-right: 10px;
+    }
+
+    .correct-text {
+      margin-top: 12px;
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
+
+    .correct {
+      color: green;
+    }
+
+    .incorrect {
+      color: red;
+    }
+
+    .columns {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .column {
+      background: white;
+      border: 2px solid #edd9c4;
+      border-radius: 16px;
+      padding: 16px;
+      min-height: 260px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    .column h2 {
+      margin-top: 0;
+      font-size: 1.2rem;
+    }
+
+    .bunny-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .bunny-grid img {
+      width: 70px;
+      height: 70px;
+      object-fit: contain;
+    }
+
+    .empty-text {
+      color: #888;
+      font-style: italic;
+    }
+
+    @media (max-width: 800px) {
+      .columns {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Addition</h1>
+    <p>Addition is the combination of two or more groups of things to make one group called a <em>sum</em>.</p>
+    <p>Addition can be very helpful in everyday life. For example, lets say you have two bunnies named hopper and pogo. 
+        These two get together with a recipe book and settle their eyes on a carrot cake that calls for <b>10</b> carrots.
+        Excitedly, they each hop over to their respective gardens to see what they can find. Pogo comes back with <b>7</b> carrots
+        and hopper came back with <b>4</b> carrots. Their ears droop with disappointment as they realize 4 is not enough and neither is 7.
+        Then, Pogo has the great idea to combine their carrots into one big group and see if they have enough!
+        </p>
+        <p>How many carrots do you think Pogo and Hopper have together?</p>
+
+    <div class="answer-check">
+      <p>Enter your answer:</p>
+      <input id="answerInput" type="number" min="0" max="100" step="1" />
+      <div class="correct-text" id="correctText"></div>
+    </div>
+
+    <h4>Try it yourself!</h4>
+
+    <div class="calculator">
+      <input id="num1" type="number" min="0" max="100" step="1" value="0" />
+      <div class="plus">+</div>
+      <input id="num2" type="number" min="0" max="100" step="1" value="0" />
+      <button id="addBtn">Add</button>
+    </div>
+
+    <div class="sum-text" id="sumText">0 bunnies</div>
+
+    <div class="columns">
+      <div class="column">
+        <h2>First Number</h2>
+        <div class="bunny-grid" id="bunnies1"></div>
+      </div>
+
+      <div class="column">
+        <h2>Second Number</h2>
+        <div class="bunny-grid" id="bunnies2"></div>
+      </div>
+
+      <div class="column">
+        <h2>Sum</h2>
+        <div class="bunny-grid" id="bunniesSum"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const num1Input = document.getElementById('num1');
+    const num2Input = document.getElementById('num2');
+    const addBtn = document.getElementById('addBtn');
+    const sumText = document.getElementById('sumText');
+    const bunnies1 = document.getElementById('bunnies1');
+    const bunnies2 = document.getElementById('bunnies2');
+    const bunniesSum = document.getElementById('bunniesSum');
+    const answerInput = document.getElementById('answerInput');
+    const correctText = document.getElementById('correctText');
+
+    const bunnySrc = 'bunny.png';
+
+    function sanitizeNumber(value) {
+      const num = parseInt(value, 10);
+      if (isNaN(num) || num < 0) {
+        return 0;
+      }
+      if (num > 100) {
+        return 100;
+      }
+      return num;
+    }
+
+    function renderBunnies(container, amount) {
+      container.innerHTML = '';
+
+      if (amount === 0) {
+        container.innerHTML = '<div class="empty-text">No bunnies yet</div>';
+        return;
+      }
+
+      for (let i = 0; i < amount; i++) {
+        const img = document.createElement('img');
+        img.src = bunnySrc;
+        img.alt = 'Bunny';
+        container.appendChild(img);
+      }
+    }
+
+    function updateInputColumns() {
+      const num1 = sanitizeNumber(num1Input.value);
+      const num2 = sanitizeNumber(num2Input.value);
+      num1Input.value = num1;
+      num2Input.value = num2;
+      renderBunnies(bunnies1, num1);
+      renderBunnies(bunnies2, num2);
+    }
+
+    function handleAdd() {
+      const num1 = sanitizeNumber(num1Input.value);
+      const num2 = sanitizeNumber(num2Input.value);
+      num1Input.value = num1;
+      num2Input.value = num2;
+      const sum = num1 + num2;
+
+      sumText.textContent = `${sum} bunnies`;
+      renderBunnies(bunniesSum, sum);
+    }
+
+    function checkAnswer() {
+      const rawValue = answerInput.value;
+
+      if (rawValue === '') {
+        correctText.textContent = '';
+        correctText.className = 'correct-text';
+        return;
+      }
+
+      const answer = sanitizeNumber(rawValue);
+      answerInput.value = answer;
+
+      if (answer === 11) {
+        correctText.textContent = 'Correct!';
+        correctText.className = 'correct-text correct';
+      } else {
+        correctText.textContent = 'Try again';
+        correctText.className = 'correct-text incorrect';
+      }
+    }
+
+    num1Input.addEventListener('input', updateInputColumns);
+    num2Input.addEventListener('input', updateInputColumns);
+    addBtn.addEventListener('click', handleAdd);
+    answerInput.addEventListener('input', checkAnswer);
+
+    updateInputColumns();
+    renderBunnies(bunniesSum, 0);
+  </script>
+</body>
+</html>
