@@ -65,25 +65,25 @@
     <script>
         fetch("https://raw.githubusercontent.com/CS272-S26/p6/refs/heads/main/questions")
         .then(res => res.json())
-        .then(operations => {
-            operations.forEach(op => appendQuestions(op));
+        .then(questions => {
+            questions.forEach(q => appendQuestions(q));
         })
 
-        function appendQuestions(op) {
+        function appendQuestions(q) {
             const cardNode = null;
 
-            if (op === "addition") {
+            if (q.type === "addition") {
                 cardNode = document.getElementById("addCard");
-            } else if (op === "subtraction") {
+            } else if (q.type === "subtraction") {
                 cardNode = document.getElementById("subCard");
-            } else if (op === "multiplication") {
+            } else if (q.type === "multiplication") {
                 cardNode = document.getElementById("multiCard");
-            } else if (op === "division") {
+            } else if (q.type === "division") {
                 cardNode = document.getElementById("divCard");
             }
 
             const questionNode = document.createElement("p");
-            questionNode.innerText = op.question;
+            questionNode.innerText = q.question;
 
             cardNode.appendChild(questionNode);
         }
