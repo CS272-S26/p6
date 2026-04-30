@@ -1,0 +1,55 @@
+[
+    {
+        "addition": [
+            {"question": "Pogo and Hopper find out they also need tomatoes for their recipe. They hop back to their gardens to see what they can find. Pogo comes back with 20 tomatoes, and Hopper comes back with 2 tomatoes. How many tomatoes do they have together?",
+            "answer": 22,},
+            {"question": "Pogo and Hopper find out they also need potatoes for their recipe. They hop back to their gardens to see what they can find. Pogo comes back with 16 potatoes, and Hopper comes back with 8 potatoes. How many potatoes do they have together?",
+            "answer": 24},
+            {"question": "Pogo and Hopper find out they also need green beans for their recipe. They hop back to their gardens to see what they can find. Pogo comes back with 2 green beans, and Hopper comes back with 7 green beans. How many green beans do they have together?",
+            "answer": 0},
+            {"question": "",
+            "answer": 0},
+            {"question": "",
+            "answer": 0},
+            ]
+
+        subtraction: [
+            {"question": "",
+            "answer": 0},
+            {"question": "",
+            "answer": 0},
+            {"question": "",
+            "answer": 0},
+            {"question": "",
+            "answer": 0},
+            {"question": "",
+            "answer": 0},
+        ]
+
+        multiplication: [
+            {"question": "",
+            "answer": 0},
+            {"question": "",
+            "answer": 0},
+            {"question": "",
+            "answer": 0},
+            {"question": "",
+            "answer": 0},
+            {"question": "",
+            "answer": 0},
+        ]
+
+        division: [
+            {"question": "",
+            "answer": 0},
+            {"question": "",
+            "answer": 0},
+            {"question": "",
+            "answer": 0},
+            {"question": "",
+            "answer": 0},
+            {"question": "",
+            "answer": 0},
+        ]
+    }
+]
