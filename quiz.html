@@ -36,5 +36,58 @@
                 </ul>
             </nav>
     </header>   
+    <h1>Quiz</h1>
+    <p></p>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-6">
+                <div id="addCard" class="card m-2 p-2">
+                    <h4><b>Addition Problems</b></h4>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-6">
+                <div id="subCard" class="card m-2 p-2">
+                    <h4><b>Subtraction Problems</b></h4>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-6">
+                <div id="multiCard" class="card m-2 p-2">
+                    <h4><b>Multiplication Problems</b></h4>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-6">
+                <div id="divCard" class="card m-2 p-2">
+                    <h4><b>Division Problems</b></h4>
+                </div>
+            </div>
+        </div>
+    </div>        
+    <script>
+        fetch("https://raw.githubusercontent.com/CS272-S26/p6/refs/heads/main/questions")
+        .then(res => res.json())
+        .then(operations => {
+            operations.forEach(op => appendQuestions(op));
+        })
+
+        function appendQuestions(op) {
+            const cardNode = null;
+
+            if (op === "addition") {
+                cardNode = document.getElementById("addCard");
+            } else if (op === "subtraction") {
+                cardNode = document.getElementById("subCard");
+            } else if (op === "multiplication") {
+                cardNode = document.getElementById("multiCard");
+            } else if (op === "division") {
+                cardNode = document.getElementById("divCard");
+            }
+
+            const questionNode = document.createElement("p");
+            questionNode.innerText = op.question;
+
+            cardNode.appendChild(questionNode);
+        }
+
+    </script>
 </body>
 </html>
