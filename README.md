@@ -1,3 +1,5 @@
+# Simple Math Learning Tool
+
 This website allows users to learn simple arithmetic operations like addition, subtraction, multiplication, and division. Each operation have a dedicated page where they can input numbers for calculations, enter their answers, and check if they are correct. Each page also have an overview explaining the operation as well as an interactive practice question. 
 The website also include a quiz page where users can select kinds of questions/operations they would like practice with. The website pulls questions from a bank and score the user based on how many they got right.
 Lastly, to tie everything together cleanly and offer the user an easy means to navigate each of the aforementioned pages, there will be a homepage with a directory that suggests a learning path for the user.
