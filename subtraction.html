@@ -7,6 +7,141 @@
     <link href="styles.css" rel="stylesheet"/>
     <title>Subtraction</title>
 </head>
+<style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #fffaf5;
+      color: #333;
+      padding: 32px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 24px;
+    }
+
+    .calculator {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    input[type="number"] {
+      width: 120px;
+      padding: 12px;
+      font-size: 1.2rem;
+      text-align: center;
+      border: 2px solid #d9c2a7;
+      border-radius: 10px;
+      background: white;
+    }
+
+    .plus {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    button {
+      padding: 12px 20px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 10px;
+      background: #e7b977;
+      color: #222;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background: #dca85d;
+    }
+
+    .sum-text {
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-bottom: 28px;
+    }
+
+    .answer-check {
+      margin: 32px 0;
+    }
+
+    .answer-check input {
+      margin-right: 10px;
+    }
+
+    .correct-text {
+      margin-top: 12px;
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
+
+    .correct {
+      color: green;
+    }
+
+    .incorrect {
+      color: red;
+    }
+
+    .columns {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .column {
+      background: white;
+      border: 2px solid #edd9c4;
+      border-radius: 16px;
+      padding: 16px;
+      min-height: 260px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    .column h2 {
+      margin-top: 0;
+      font-size: 1.2rem;
+    }
+
+    .bunny-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .bunny-grid img {
+      width: 70px;
+      height: 70px;
+      object-fit: contain;
+    }
+
+    .empty-text {
+      color: #888;
+      font-style: italic;
+    }
+
+    @media (max-width: 800px) {
+      .columns {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 <body>
     <header>
         <h1 id="webTitle">Simple Math Learning Tool</h1>
@@ -40,12 +175,10 @@
     <h1>Subtraction</h1>
     <p>Subtraction is the process of taking one group of things away from another group to find out how many are left, called the <em>difference</em>.</p>
     <p>Subtraction can be very helpful in everyday life. For example, lets say you have two bunnies named hopper and pogo. 
-        These two get together with a recipe book and settle their eyes on a carrot cake that calls for <b>10</b> carrots.
-        Excitedly, they each hop over to their respective gardens to see what they can find. Pogo comes back with <b>7</b> carrots
-        and hopper came back with <b>4</b> carrots. Their ears droop with disappointment as they realize 4 is not enough and neither is 7.
-        Then, Pogo has the great idea to combine their carrots into one big group and see if they have enough!
+        These two get together with a recipe book and settle their eyes on a carrot cake that calls for <b>10</b> <var>carrots</var>.
+        Excitedly, they each hop over to their respective gardens to see what they can find and come back with <b>23</b> total <var>carrots</var>.
         </p>
-        <p>How many carrots do you think Pogo and Hopper have together?</p>
+        <p>How many <var>carrots</var> do you think Pogo and Hopper will have left after making the carrot cake?</p>
 
     <div class="answer-check">
       <p>Enter your answer:</p>
@@ -154,7 +287,7 @@
       const answer = sanitizeNumber(rawValue);
       answerInput.value = answer;
 
-      if (answer === 11) {
+      if (answer === 13) {
         correctText.textContent = 'Correct!';
         correctText.className = 'correct-text correct';
       } else {
