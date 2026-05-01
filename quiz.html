@@ -82,10 +82,40 @@
                 cardNode = document.getElementById("divCard");
             }
 
+            if (cardNode === null) {
+                return;
+            }
+
+            const problemNode = document.createElement("div");
+            problemNode.classList.add("mb-3");
+
             const questionNode = document.createElement("p");
             questionNode.innerText = q.question;
 
-            cardNode.appendChild(questionNode);
+            const answerNode = document.createElement("input");
+            answerNode.classList.add("form-control");
+            answerNode.type = "number";
+            answerNode.placeholder = "Enter your answer here!";
+
+            const feedbackNode = document.createElement("p");
+            feedbackNode.classList.add("mt-1");
+
+            answerNode.addEventListener("input", () => {
+                const userAnswer = answerNode.value.trim();
+
+                if (userAnswer !== "" && Number(userAnswer) === Number(q.answer)) {
+                    feedbackNode.innerText = "correct";
+                    feedbackNode.classList.add("text-success");
+                } else {
+                    feedbackNode.innerText = "";
+                    feedbackNode.classList.remove("text-success");
+                }
+            });
+
+            problemNode.appendChild(questionNode);
+            problemNode.appendChild(answerNode);
+            problemNode.appendChild(feedbackNode);
+            cardNode.appendChild(problemNode);
         }
 
     </script>

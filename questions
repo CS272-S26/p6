@@ -26,77 +26,77 @@
     },
     {
         "type": "subtraction",
-        "question": "",
-        "answer": 0
+        "question": "Pogo and Hopper picked 18 carrots from the garden. Hopper used 7 carrots to make a crunchy snack. How many carrots do they have left?",
+        "answer": 11
     },
     {
         "type": "subtraction",
-        "question": "",
-        "answer": 0
+        "question": "Pogo gathered 25 lettuce leaves for lunch. Hopper nibbled 9 of the leaves while setting the table. How many lettuce leaves are left?",
+        "answer": 16
     },
     {
         "type": "subtraction",
-        "question": "",
-        "answer": 0
+        "question": "Pogo and Hopper found 14 radishes near the fence. They gave 6 radishes to their bunny friends. How many radishes do Pogo and Hopper still have?",
+        "answer": 8
     },
     {
         "type": "subtraction",
-        "question": "",
-        "answer": 0
+        "question": "Hopper carried 20 blueberries in a little basket. On the way home, 5 blueberries bounced out. How many blueberries stayed in the basket?",
+        "answer": 15
     },
     {
         "type": "subtraction",
-        "question": "",
-        "answer": 0
+        "question": "Pogo baked 12 tiny carrot muffins for the picnic. Hopper ate 4 muffins before the picnic started. How many muffins are left?",
+        "answer": 8
     },
     {
         "type": "multiplication",
-        "question": "",
-        "answer": 0
+        "question": "Pogo planted 4 rows of carrot seeds. Each row had 6 seeds. How many carrot seeds did Pogo plant altogether?",
+        "answer": 24
     },
     {
         "type": "multiplication",
-        "question": "",
-        "answer": 0
+        "question": "Hopper packed 3 picnic baskets. Each basket had 5 strawberries inside. How many strawberries did Hopper pack in all?",
+        "answer": 15
     },
     {
         "type": "multiplication",
-        "question": "",
-        "answer": 0
+        "question": "Pogo and Hopper made 7 plates of leafy snacks. Each plate had 3 lettuce rolls. How many lettuce rolls did they make?",
+        "answer": 21
     },
     {
         "type": "multiplication",
-        "question": "",
-        "answer": 0
+        "question": "Hopper found 6 flower patches near the garden path. Each patch had 4 clover blossoms. How many clover blossoms did Hopper find?",
+        "answer": 24
     },
     {
         "type": "multiplication",
-        "question": "",
-        "answer": 0
+        "question": "Pogo filled 5 small bowls with bunny trail mix. Each bowl had 8 crunchy bits. How many crunchy bits were there altogether?",
+        "answer": 40
     },
     {
         "type": "division",
-        "question": "",
-        "answer": 0
+        "question": "Pogo and Hopper picked 18 carrots and shared them equally into 3 snack piles. How many carrots were in each pile?",
+        "answer": 6
     },
     {
         "type": "division",
-        "question": "",
-        "answer": 0
+        "question": "Hopper had 20 lettuce leaves and wanted to give the same number to 4 bunny friends. How many lettuce leaves did each friend get?",
+        "answer": 5
     },
     {
         "type": "division",
-        "question": "",
-        "answer": 0
+        "question": "Pogo baked 24 berry biscuits and placed them evenly on 6 plates. How many biscuits went on each plate?",
+        "answer": 4
     },
     {
         "type": "division",
-        "question": "",
-        "answer": 0
+        "question": "Pogo and Hopper collected 15 radishes and split them equally among 5 garden baskets. How many radishes went in each basket?",
+        "answer": 3
     },
     {
         "type": "division",
-        "question": "",
-        "answer": 0
+        "question": "Hopper found 28 clover leaves and tied them into 7 equal bundles. How many clover leaves were in each bundle?",
+        "answer": 4
     }
 ]
