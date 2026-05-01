@@ -173,10 +173,14 @@
     </header>
     <div class="container">
         <h1>Multiplication</h1>
-        <p>{Multiplication definition here} <em>product</em>.</p>
-        <p>{Multiplication scenario}
+        <p>Multiplication is the process of repeated addition of the same number, 
+          acting as a shortcut to find the total of equal groups called the <em>product</em>.</p>
+        <p>Multiplication can be very helpful in everyday life. For example, lets say you have two bunnies named Hopper and Pogo. 
+        These two get together with a recipe book and settle their eyes on a carrot cake that calls for <b>3</b> carrots.
+        Hopper and Pogo want to make <b>8</b> carrot cakes for their friend's party.
+        </p>
             </p>
-            <p>How many carrots do you think Pogo and Hopper have together?</p>
+            <p>How many carrots do you think Pogo and Hopper need?</p>
     
         <div class="answer-check">
           <p>Enter your answer:</p>
@@ -285,7 +289,7 @@
       const answer = sanitizeNumber(rawValue);
       answerInput.value = answer;
 
-      if (answer === 11) {
+      if (answer === 24) {
         correctText.textContent = 'Correct!';
         correctText.className = 'correct-text correct';
       } else {
