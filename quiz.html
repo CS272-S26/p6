@@ -71,6 +71,7 @@
         const answerNodes = [];
         const feedbackNodes = [];
 
+        //get the question bank and build the page from it
         fetch("https://raw.githubusercontent.com/CS272-S26/p6/refs/heads/main/questions")
         .then(res => res.json())
         .then(questions => {
@@ -80,6 +81,7 @@
 
         document.getElementById("submitQuiz").addEventListener("click", gradeQuiz);
 
+        //put each question in the card that matches its type
         function appendQuestions(q, index) {
             let cardNode = null;
 
@@ -112,6 +114,7 @@
             const feedbackNode = document.createElement("p");
             feedbackNode.classList.add("mt-1");
 
+            //save answers while the user works so reloads do not wipe them
             answerNode.addEventListener("input", () => {
                 sessionStorage.setItem(`quizAnswer${index}`, answerNode.value);
             });
@@ -125,6 +128,7 @@
             feedbackNodes[index] = feedbackNode;
         }
 
+        //check all saved inputs against the fetched answers
         function gradeQuiz() {
             let score = 0;
 

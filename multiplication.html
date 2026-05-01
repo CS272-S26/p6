@@ -95,6 +95,7 @@
 
     const bunnySrc = 'bunny.png';
 
+    //keep numbers in a range the page can draw
     function sanitizeNumber(value) {
       const num = parseInt(value, 10);
       if (isNaN(num) || num < 0) {
@@ -106,6 +107,7 @@
       return num;
     }
 
+    //redraw the picture grid for the current amount
     function renderBunnies(container, amount) {
       container.innerHTML = '';
 
@@ -163,6 +165,7 @@
       }
     }
 
+    //hook up the controls after everything exists
     num1Input.addEventListener('input', updateInputColumns);
     num2Input.addEventListener('input', updateInputColumns);
     addBtn.addEventListener('click', handleAdd);
