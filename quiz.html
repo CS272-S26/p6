@@ -61,15 +61,26 @@
                 </div>
             </div>
         </div>
+        <div class="m-2 p-2">
+            <h3 id="finalScore"></h3>
+            <button id="submitQuiz" class="btn btn-primary" type="button">Submit Quiz</button>
+        </div>
     </div>        
     <script>
+        let quizQuestions = [];
+        const answerNodes = [];
+        const feedbackNodes = [];
+
         fetch("https://raw.githubusercontent.com/CS272-S26/p6/refs/heads/main/questions")
         .then(res => res.json())
         .then(questions => {
-            questions.forEach(q => appendQuestions(q));
+            quizQuestions = questions;
+            quizQuestions.forEach((q, index) => appendQuestions(q, index));
         })
 
-        function appendQuestions(q) {
+        document.getElementById("submitQuiz").addEventListener("click", gradeQuiz);
+
+        function appendQuestions(q, index) {
             let cardNode = null;
 
             if (q.type === "addition") {
@@ -96,26 +107,44 @@
             answerNode.classList.add("form-control");
             answerNode.type = "number";
             answerNode.placeholder = "Enter your answer here!";
+            answerNode.value = sessionStorage.getItem(`quizAnswer${index}`) || "";
 
             const feedbackNode = document.createElement("p");
             feedbackNode.classList.add("mt-1");
 
             answerNode.addEventListener("input", () => {
-                const userAnswer = answerNode.value.trim();
-
-                if (userAnswer !== "" && Number(userAnswer) === Number(q.answer)) {
-                    feedbackNode.innerText = "correct";
-                    feedbackNode.classList.add("text-success");
-                } else {
-                    feedbackNode.innerText = "";
-                    feedbackNode.classList.remove("text-success");
-                }
+                sessionStorage.setItem(`quizAnswer${index}`, answerNode.value);
             });
 
             problemNode.appendChild(questionNode);
             problemNode.appendChild(answerNode);
             problemNode.appendChild(feedbackNode);
             cardNode.appendChild(problemNode);
+
+            answerNodes[index] = answerNode;
+            feedbackNodes[index] = feedbackNode;
+        }
+
+        function gradeQuiz() {
+            let score = 0;
+
+            quizQuestions.forEach((q, index) => {
+                const userAnswer = answerNodes[index].value.trim();
+                const feedbackNode = feedbackNodes[index];
+
+                feedbackNode.classList.remove("text-success", "text-danger");
+
+                if (userAnswer !== "" && Number(userAnswer) === Number(q.answer)) {
+                    score++;
+                    feedbackNode.innerText = "correct";
+                    feedbackNode.classList.add("text-success");
+                } else {
+                    feedbackNode.innerText = "incorrect";
+                    feedbackNode.classList.add("text-danger");
+                }
+            });
+
+            document.getElementById("finalScore").innerText = `Final Score: ${score}/${quizQuestions.length}`;
         }
 
     </script>
